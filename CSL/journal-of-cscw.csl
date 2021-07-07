@@ -21,7 +21,7 @@
     <category citation-format="author-date"/>
     <category field="generic-base"/>
     <summary>A style for the journal of CSCW, based on Springer Author Date Style for the disciplines Medicine, Biomedicine, Life Sciences, Chemistry, Geosciences, Computer Science, Engineering, Economics. This style is based on Harvard style and recommendations of the Council of Biology Editors.</summary>
-    <updated>2021-07-07T12:21:56+00:00</updated>
+    <updated>2021-07-07T12:49:28+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 License</rights>
   </info>
   <locale>
@@ -93,6 +93,7 @@
       <group delimiter=" ">
         <text macro="author-short"/>
         <text macro="year"/>
+        <text variable="locator" prefix="p. "/>
       </group>
     </layout>
   </citation>

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" default-locale="en-US" version="1.0" demote-non-dropping-particle="never">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Journal of CSCW</title>
+    <id>http://www.zotero.org/styles/journal-of-cscw</id>
+    <link href="http://www.zotero.org/styles/journal-of-cscw" rel="self"/>
+    <link href="http://www.springer.com/cda/content/document/cda_downloaddocument/instruct-authors-e.pdf" rel="documentation"/>
+    <link href="http://www.springer.com/cda/content/document/cda_downloaddocument/manuscript-guidelines-1.0.pdf" rel="documentation"/>
+    <link href="http://www.springer.com/cda/content/document/cda_downloaddocument/Key_Style_Points_1.0.pdf" rel="documentation"/>
+    <author>
+      <name>Jens Allmer</name>
+      <email>jens@allmer.de</email>
+      <uri>http://jens.allmer.de</uri>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>Springer Author Date Style for the disciplines Medicine, Biomedicine, Life Sciences, Chemistry, Geosciences, Computer Science, Engineering, Economics. This style is based on Harvard style and recommendations of the Council of Biology Editors.</summary>
+    <updated>2021-07-07T08:22:10+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="edition" form="short">edn.</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter="; " and="text" delimiter-precedes-last="always" initialize-with="" name-as-sort-order="first"/>
+      <label form="short" strip-periods="true" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book">
+        <group delimiter=", ">
+          <text variable="title" font-style="italic"/>
+          <text macro="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="title" font-style="normal"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-parenth">
+    <date variable="issued" prefix="(" suffix=").">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true">
+    <sort>
+      <key variable="issued"/>
+      <key macro="author"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=" ">
+        <text macro="author-short"/>
+        <text macro="year"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key variable="author" sort="ascending"/>
+    </sort>
+    <layout>
+      <group delimiter=" ">
+        <text macro="author"/>
+        <text macro="year-parenth"/>
+        <text macro="title"/>
+      </group>
+      <choose>
+        <if type="chapter paper-conference" match="any">
+          <group delimiter=" " prefix=" " suffix=". ">
+            <text term="in" text-case="capitalize-first"/>
+            <names variable="editor" suffix=": ">
+              <name delimiter="; " and="text" delimiter-precedes-last="always" initialize-with="" name-as-sort-order="first" sort-separator=" "/>
+              <label form="short" strip-periods="true" prefix=" (" suffix=")"/>
+            </names>
+            <group>
+              <text variable="container-title" text-case="capitalize-first" font-style="italic"/>
+              <text macro="edition"/>
+            </group>
+          </group>
+          <group suffix=". ">
+            <text variable="publisher-place" suffix=": "/>
+            <text variable="publisher" suffix=", "/>
+            <group delimiter=" ">
+              <text variable="page" prefix="pp. "/>
+              <text value=""/>
+            </group>
+          </group>
+        </if>
+        <else-if type="article-journal">
+          <choose>
+            <if variable="page volume" match="any">
+              <group prefix=". ">
+                <group>
+                  <text variable="container-title" form="short" strip-periods="true" font-style="italic" suffix=", "/>
+                  <group delimiter=", ">
+                    <text variable="volume" prefix="vol. "/>
+                    <text variable="issue" prefix="no. "/>
+                    <text variable="page" prefix="pp. "/>
+                  </group>
+                  <text prefix=". https://doi.org/" variable="DOI"/>
+                </group>
+              </group>
+            </if>
+            <else>
+              <group prefix=". " delimiter=". ">
+                <text variable="container-title" form="short" strip-periods="true"/>
+                <text prefix="https://doi.org/" variable="DOI"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
+        <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group delimiter=": " prefix=". ">
+            <text variable="publisher-place"/>
+            <text variable="publisher" suffix="."/>
+          </group>
+        </else-if>
+        <else-if type="webpage post-weblog" match="any">
+          <group prefix=". " delimiter=". ">
+            <text prefix="In: " variable="container-title" form="short"/>
+            <text variable="URL"/>
+            <date variable="accessed">
+              <date-part prefix="Accessed " name="day" suffix=" "/>
+              <date-part name="month" form="short" suffix=" " strip-periods="true"/>
+              <date-part name="year"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group prefix=". " suffix=".">
+            <text variable="genre" text-case="capitalize-first" suffix=", "/>
+            <text variable="original-publisher-place" suffix=": "/>
+            <text variable="publisher"/>
+          </group>
+        </else-if>
+        <else-if type="paper-conference" match="any"/>
+        <else>
+          <group prefix=". " delimiter=" ">
+            <text variable="container-title" form="short"/>
+            <group delimiter=":">
+              <text variable="volume"/>
+              <text variable="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
